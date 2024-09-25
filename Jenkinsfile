@@ -1,9 +1,12 @@
 pipeline{
     agent any
-    tools {
-        nodejs 'NodeJS 14'
-    }
+
     stages{
+        stage('Install Yarn') {
+            steps {
+                sh 'npm install -g yarn'
+            }
+        }
         stage('Build'){
             steps{
                 sh './gradlew assemble'
